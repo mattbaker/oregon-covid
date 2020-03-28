@@ -31,13 +31,13 @@
       </p>
 
       <p>
-        Data only tells part of the story. For example, a spike in positive cases begins to occur around March 27th due
+        A spike in positive and negative COVID-19 cases begins to occur around <strong>March 27th</strong> due
         to an increase in Oregon's testing capacity<label for="why-num-cases-increasing" class="margin-toggle sidenote-number"></label>
         <input type="checkbox" id="why-num-cases-increasing" class="margin-toggle" />
         <span class="sidenote">
           <a href="https://www.youtube.com/watch?v=sxeKZg9NqN4&feature=youtu.be">Why the number of cases is increasing</a>, Oregon Public Health Division.
-        </span>,
-        this is not because the virus' spread accelerated overnight.
+        </span>.
+        This spike is not due to a sudden acceleration of the virus' spread.
       </p>
 
       <p>
@@ -59,19 +59,6 @@
         <figcaption>Positive COVID-19 cases over time</figcaption>
       </figure>
 
-      <table class="cases-table" id="positive-cases-table">
-        <caption>Postive COVID-19 Cases</caption>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Cumulative</th>
-            <th>New</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-
       <h3>Negative</h3>
 
       <p>
@@ -82,20 +69,6 @@
         <figcaption>Negative COVID-19 cases over time</figcaption>
         <svg class="cases-chart" id="negative-cases-chart"></svg>
       </figure>
-
-      <table class="cases-table" id="negative-cases-table">
-        <caption>Negative COVID-19 Cases</caption>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Cumulative</th>
-            <th>New</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-
 
       <h3>Deaths</h3>
 
@@ -108,8 +81,10 @@
         <svg class="cases-chart" id="deaths-cases-chart"></svg>
       </figure>
 
-      <table class="cases-table" id="deaths-table">
-        <caption>COVID-19-related Deaths</caption>
+      <h3>COVID-19 Tests Data</h3>
+
+      <table class="cases-table" id="positive-cases-table">
+        <caption>Postive Tests</caption>
         <thead>
           <tr>
             <th>Date</th>
@@ -121,7 +96,29 @@
         </tbody>
       </table>
 
+      <table class="cases-table" id="negative-cases-table">
+        <caption>Negative Tests</caption>
+        <thead>
+          <tr>
+            <th>Cumulative</th>
+            <th>New</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
 
+      <table class="cases-table" id="deaths-table" style="float:none;">
+        <caption>Deaths</caption>
+        <thead>
+          <tr>
+            <th>Cumulative</th>
+            <th>New</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
     </section>
 
     <section>
@@ -181,8 +178,8 @@
       d3.select("#death-total").datum(today).text(function (d) { return numberFormatter(d.deaths) })
 
       renderCasesTable(d3.select("#positive-cases-table"), reports, "positive")
-      renderCasesTable(d3.select("#negative-cases-table"), reports, "negative")
-      renderCasesTable(d3.select("#deaths-table"), reports, "deaths")
+      renderCasesTable(d3.select("#negative-cases-table"), reports, "negative", true)
+      renderCasesTable(d3.select("#deaths-table"), reports, "deaths", true)
 
       renderCaseChart(d3.select("#positive-cases-chart"), reports, "positive")
       renderCaseChart(d3.select("#negative-cases-chart"), reports, "negative")

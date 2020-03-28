@@ -7,6 +7,7 @@ th {
 .cases-table {
   width: auto;
   margin-right: 10px;
+  float: left;
 }
 
 .cases-table td,th {
@@ -71,4 +72,16 @@ th {
 #deaths-cases-chart.cases-chart .case-bar {
   stroke: none;
   fill: rgba(65, 65, 65, 1.0);
+}
+
+#positive-cases-table td.numeral {
+  color: rgb(189, 0, 0)
+}
+
+#negative-cases-table td.numeral {
+  color: rgb(43, 132, 7)
+}
+
+#deaths-table td.numeral {
+  color: rgba(65, 65, 65, 1)
 }

@@ -1,4 +1,4 @@
-function renderCasesTable(table, reports, attribute) {
+function renderCasesTable(table, reports, attribute, omitDate) {
   let dateFormatter = d3.timeFormat("%m/%d");
   let access = (report) => report[attribute];
 
@@ -8,10 +8,12 @@ function renderCasesTable(table, reports, attribute) {
     .enter()
     .append("tr")
 
-  positiveTableRows
-    .append("td")
-    .attr("class", ["case-table-date"])
-    .text((report) => dateFormatter(report.date))
+  if (!omitDate) {
+    positiveTableRows
+      .append("td")
+      .attr("class", ["case-table-date"])
+      .text((report) => dateFormatter(report.date))
+  }
 
   positiveTableRows
     .append("td")
