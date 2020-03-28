@@ -51,12 +51,12 @@
       <h3>Positive</h3>
 
       <p>
-        There have been <strong id="positive-total" class="numeral">—</strong> confirmed cases of COVID-19 in Oregon overall.
+        There have been <strong id="positive-delta" class="numeral">—</strong> newly confirmed cases of COVID-19 since the last report, and <strong id="positive-total" class="numeral">—</strong> cases in Oregon overall.
       </p>
 
       <figure>
-        <figcaption>Positive COVID-19 cases over time</figcaption>
         <svg class="cases-chart" id="positive-cases-chart"></svg>
+        <figcaption>Positive COVID-19 cases over time</figcaption>
       </figure>
 
       <table class="cases-table" id="positive-cases-table">
@@ -75,7 +75,7 @@
       <h3>Negative</h3>
 
       <p>
-        There have been <strong id="negative-total" class="numeral">—</strong> negative tests of COVID-19 in Oregon overall.
+        There have been <strong id="negative-delta" class="numeral">—</strong> newly confirmed negative tests of COVID-19 since the last report, and <strong id="negative-total" class="numeral">—</strong> negative tests in Oregon overall.
       </p>
 
       <figure>
@@ -100,7 +100,7 @@
       <h3>Deaths</h3>
 
       <p>
-        There have been <strong id="death-total" class="numeral">—</strong> COVID-19-related deaths in Oregon.
+        There have been <strong id="death-delta" class="numeral">—</strong> COVID-19-related deaths since the last report, and <strong id="death-total" class="numeral">—</strong> COVID-19-related deaths in Oregon overall.
       </p>
 
       <figure>
@@ -124,7 +124,7 @@
 
     </section>
 
-    <!-- <section>
+    <section>
       <h2>Hospital Resources</h2>
       <p>
         There are currently <strong class="numeral">102</strong> people hospitalized due to COVID-19. <strong
@@ -141,7 +141,7 @@
         Oregon has <strong class="numeral">360</strong> ICU beds available and <strong class="numeral">2,294</strong>
         non-ICU beds.
       </p>
-    </section> -->
+    </section>
 
   </article>
 </body>
@@ -165,8 +165,19 @@
         return " " + numberFormatter(n)
       }
 
+      d3.select("#positive-delta").datum(today).text(function (d) {
+        return numberFormatter(d.positive - reports[reports.length-2].positive)
+      })
       d3.select("#positive-total").datum(today).text(function (d) { return numberFormatter(d.positive) })
+
+      d3.select("#negative-delta").datum(today).text(function (d) {
+        return numberFormatter(d.negative - reports[reports.length-2].negative)
+      })
       d3.select("#negative-total").datum(today).text(function (d) { return numberFormatter(d.negative) })
+
+      d3.select("#death-delta").datum(today).text(function (d) {
+        return numberFormatter(d.deaths - reports[reports.length-2].deaths)
+      })
       d3.select("#death-total").datum(today).text(function (d) { return numberFormatter(d.deaths) })
 
       renderCasesTable(d3.select("#positive-cases-table"), reports, "positive")

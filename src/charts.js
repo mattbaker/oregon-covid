@@ -73,7 +73,6 @@ function renderCaseChart(svg, reports, attribute) {
     })
     .attr("height", (report, i) => {
       if (i === 0) return yScale(0) - yScale(access(report))
-      console.log(access(report) - access(reports[i - 1]))
       return yScale(0) - yScale(access(report) - access(reports[i - 1]))
     })
     .attr("width", "1"); //xscale.bandwidth() ??

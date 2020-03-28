@@ -16,7 +16,7 @@ function renderCasesTable(table, reports, attribute) {
   positiveTableRows
     .append("td")
     .attr("class", ["numeral case-table-cumulative"])
-    .text(access)
+    .text((report) => d3.format(",")(access(report)))
 
   positiveTableRows
     .append("td")
