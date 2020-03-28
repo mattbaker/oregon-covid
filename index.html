@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Oregon COVID-19 Reports</title>
+  <link rel="stylesheet" href="tufte.css" />
+  <link rel="stylesheet" href="index.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="./lib/charts.js"></script>
+  <script src="./lib/tables.js"></script>
+
+</head>
+
+<body>
+  <article>
+    <h1>Oregon COVID-19 Reports</h1>
+
+    <section>
+      <h2>Overview</h2>
+
+      <p>
+        This page presents the COVID-19 data<label for="oha-covid-reports" class="margin-toggle sidenote-number"></label>
+        <input type="checkbox" id="oha-covid-reports" class="margin-toggle" />
+        <span class="sidenote">
+          See Oregon Health Authority's <a href="https://govstatus.egov.com/OR-OHA-COVID-19">COVID-19 Reports</a>
+        </span>
+        made public by the Oregon Health Authority. It is updated daily as the OHA makes
+        new data available.
+      </p>
+
+      <p>
+        Data only tells part of the story. For example, a spike in positive cases begins to occur around March 27th due
+        to an increase in Oregon's testing capacity<label for="why-num-cases-increasing" class="margin-toggle sidenote-number"></label>
+        <input type="checkbox" id="why-num-cases-increasing" class="margin-toggle" />
+        <span class="sidenote">
+          <a href="https://www.youtube.com/watch?v=sxeKZg9NqN4&feature=youtu.be">Why the number of cases is increasing</a>, Oregon Public Health Division.
+        </span>,
+        this is not because the virus' spread accelerated overnight.
+      </p>
+
+      <p>
+        The OHA's <a href="https://www.oregon.gov/oha/erd/pages/covid-19-news.aspx">External Relations Division</a>, has news releases with valuable context about the data you see here.
+      </p>
+    </section>
+
+    <section>
+      <h2>Cases</h2>
+
+      <h3>Positive</h3>
+
+      <p>
+        There have been <strong id="positive-total" class="numeral">—</strong> confirmed cases of COVID-19 in Oregon overall.
+      </p>
+
+      <figure>
+        <figcaption>Positive COVID-19 cases over time</figcaption>
+        <svg class="cases-chart" id="positive-cases-chart"></svg>
+      </figure>
+
+      <table class="cases-table" id="positive-cases-table">
+        <caption>Postive COVID-19 Cases</caption>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Cumulative</th>
+            <th>New</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+      <h3>Negative</h3>
+
+      <p>
+        There have been <strong id="negative-total" class="numeral">—</strong> negative tests of COVID-19 in Oregon overall.
+      </p>
+
+      <figure>
+        <figcaption>Negative COVID-19 cases over time</figcaption>
+        <svg class="cases-chart" id="negative-cases-chart"></svg>
+      </figure>
+
+      <table class="cases-table" id="negative-cases-table">
+        <caption>Negative COVID-19 Cases</caption>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Cumulative</th>
+            <th>New</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+
+      <h3>Deaths</h3>
+
+      <p>
+        There have been <strong id="death-total" class="numeral">—</strong> COVID-19-related deaths in Oregon.
+      </p>
+
+      <figure>
+        <figcaption>COVID-19 deaths over time.</figcaption>
+        <svg class="cases-chart" id="deaths-cases-chart"></svg>
+      </figure>
+
+      <table class="cases-table" id="deaths-table">
+        <caption>COVID-19-related Deaths</caption>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Cumulative</th>
+            <th>New</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+
+    </section>
+
+    <!-- <section>
+      <h2>Hospital Resources</h2>
+      <p>
+        There are currently <strong class="numeral">102</strong> people hospitalized due to COVID-19. <strong
+          class="numeral">218</strong> are not hospitalized, and the status of <strong class="numeral">94</strong> are
+        unreported.
+      </p>
+
+      <p>
+        The state has <strong class="numeral">715</strong> ventilators available. <strong class="numeral">31</strong>
+        COVID-19 patients are on ventilators.
+      </p>
+
+      <p>
+        Oregon has <strong class="numeral">360</strong> ICU beds available and <strong class="numeral">2,294</strong>
+        non-ICU beds.
+      </p>
+    </section> -->
+
+  </article>
+</body>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function (e) {
+    d3.csv("./reports.csv").then(function (reports) {
+      reports.forEach(function (report) {
+        report.positive = parseInt(report.positive)
+        report.negative = parseInt(report.negative)
+        report.deaths = parseInt(report.deaths)
+        report.date = new Date(report.date)
+      })
+      var day0 = reports[0];
+      var today = reports[reports.length - 1];
+      var numberFormatter = d3.format(",");
+      var dateFormatter = d3.timeFormat("%m/%d");
+      var changeFormatter = function (n) {
+        if (n < 0) return "-" + numberFormatter(n)
+        if (n > 0) return "+" + numberFormatter(n)
+        return " " + numberFormatter(n)
+      }
+
+      d3.select("#positive-total").datum(today).text(function (d) { return numberFormatter(d.positive) })
+      d3.select("#negative-total").datum(today).text(function (d) { return numberFormatter(d.negative) })
+      d3.select("#death-total").datum(today).text(function (d) { return numberFormatter(d.deaths) })
+
+      renderCasesTable(d3.select("#positive-cases-table"), reports, "positive")
+      renderCasesTable(d3.select("#negative-cases-table"), reports, "negative")
+      renderCasesTable(d3.select("#deaths-table"), reports, "deaths")
+
+      renderCaseChart(d3.select("#positive-cases-chart"), reports, "positive")
+      renderCaseChart(d3.select("#negative-cases-chart"), reports, "negative")
+      renderCaseChart(d3.select("#deaths-cases-chart"), reports, "deaths")
+    });
+  });
+
+</script>
+
+</html>

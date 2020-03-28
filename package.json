@@ -1,0 +1,17 @@
+{
+  "name": "covid-or",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0"
+  },
+  "scripts": {
+    "build": "babel src -d lib",
+    "watch": "babel -w src -d lib"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,74 @@
+th {
+  text-align: left;
+  border-bottom: 1px solid #111;
+  font-variant: small-caps;
+}
+
+.cases-table {
+  width: auto;
+  margin-right: 10px;
+}
+
+.cases-table td,th {
+  padding-right: 20px;
+}
+
+
+.cases-chart text {
+  font-family: "et-book";
+}
+
+.case-area {
+  stroke: none;
+}
+
+.case-line {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.case-bar {
+  stroke: none;
+}
+
+#positive-cases-chart.cases-chart .case-area {
+  fill: rgba(255, 0, 0, 0.3)
+}
+
+#positive-cases-chart.cases-chart .case-line {
+  stroke: rgba(255, 0, 0, 1.0);
+}
+
+#positive-cases-chart.cases-chart .case-bar {
+  stroke: none;
+  fill: rgba(255, 0, 0, 1.0);
+}
+
+#negative-cases-chart.cases-chart .case-area {
+  fill: rgba(107, 167, 83, 0.3)
+}
+
+#negative-cases-chart.cases-chart .case-line {
+  stroke: rgba(107, 167, 83, 1.0);
+}
+
+#negative-cases-chart.cases-chart .case-bar {
+  stroke: none;
+  fill: rgba(107, 167, 83, 1.0);
+}
+
+
+#deaths-cases-chart.cases-chart .case-area {
+  fill: rgba(65, 65, 65, 0.3)
+}
+
+#deaths-cases-chart.cases-chart .case-line {
+  stroke: rgba(65, 65, 65, 1.0);
+}
+
+#deaths-cases-chart.cases-chart .case-bar {
+  stroke: none;
+  fill: rgba(65, 65, 65, 1.0);
+}
