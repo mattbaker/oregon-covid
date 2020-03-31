@@ -14,9 +14,66 @@ th {
   padding-right: 20px;
 }
 
+.legend {
+  margin-left: 17px;
+}
 
-.cases-chart text {
-  font-family: "et-book";
+.legend-icon {
+  display: inline-block;
+  width: 10px;
+  height:10px;
+  vertical-align: middle;
+}
+
+.legend-icon.patients-on-ventilators {
+  background:rgba(255,0,0,0.3);
+  border-top: 1px solid  rgba(255,0,0,1);
+}
+
+.legend-icon.available-ventilators {
+  background: rgba(0, 120, 255, 0.3);
+  border-top: 1px solid  rgba(0, 120, 255, 1.0);
+}
+
+
+.legend-icon.hospitalized {
+  background:rgba(255,0,0,0.3);
+  border-top: 1px solid  rgba(255,0,0,1);
+}
+
+.legend-icon.not-hospitalized {
+  background: rgba(255, 209, 18, 0.35);
+  border-top: 1px solid  rgb(255, 212, 0, 1.0);
+}
+
+.legend-icon.not-reported {
+  background: rgba(0, 0, 0, 0.1);
+  border-top: 1px solid  rgb(0, 0, 0, 0.4);
+}
+
+.legend-icon.positive-test {
+  background:rgba(255,0,0,0.3);
+  border-top: 1px solid  rgba(255,0,0,1);
+}
+
+.legend-icon.negative-test {
+  background :rgba(107, 167, 83, 0.3);
+  border-top: 1px solid rgba(107, 167, 83, 1.0);
+}
+
+.legend-icon.death {
+  background:rgba(65, 65, 65, 0.3);
+  border-top: 1px solid  rgba(65, 65, 65, 1.0);
+}
+
+.legend-icon.available-icu-beds {
+  background:rgba(135, 110, 255, 0.3);
+  border-top: 1px solid  rgba(135, 110, 255, 1.0);
+}
+
+.legend-icon.available-non-icu-beds {
+  background:rgba(255, 164, 250, 0.3);
+  border-top: 1px solid  rgba(255, 164, 250, 1.0);
 }
 
 .case-area {
@@ -25,7 +82,7 @@ th {
 
 .case-line {
   fill: none;
-  stroke-width: 1.5;
+  stroke-width: 2;
   stroke-linejoin: round;
   stroke-linecap: round;
 }

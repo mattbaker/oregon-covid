@@ -31,65 +31,143 @@
       </p>
 
       <p>
-        A spike in positive and negative COVID-19 cases begins to occur around <strong>March 27th</strong> due
-        to an increase in Oregon's testing capacity<label for="why-num-cases-increasing" class="margin-toggle sidenote-number"></label>
-        <input type="checkbox" id="why-num-cases-increasing" class="margin-toggle" />
-        <span class="sidenote">
-          <a href="https://www.youtube.com/watch?v=sxeKZg9NqN4&feature=youtu.be">Why the number of cases is increasing</a>, Oregon Public Health Division.
-        </span>.
-        This spike is not due to a sudden acceleration of the virus' spread.
-      </p>
-
-      <p>
         The OHA's <a href="https://www.oregon.gov/oha/erd/pages/covid-19-news.aspx">External Relations Division</a>, has news releases with valuable context about the data you see here.
       </p>
     </section>
 
     <section>
+      <section>
+        <h2>Care Capacity</h2>
+        <h3>Hospitalizations</h3>
+        <p>
+          The most important data<label for="most-important-data" class="margin-toggle sidenote-number"></label>
+          <input type="checkbox" id="most-important-data" class="margin-toggle" />
+          <span class="sidenote">
+            <a href="https://www.youtube.com/watch?v=sxeKZg9NqN4&feature=youtu.be">Why the number of cases is increasing</a>, Oregon Public Health Division.
+          </span> to focus on during the pandemic is not the case count, but the state's capacity to care for Oregonians in need of medical attention.
+        </p>
+        <p>
+          Of those diagnosed with COVID-19, <strong id="hospitalized-covid-latest" class="numeral">—</strong> have been hospitalized, <strong
+            id="not-hospitalized-covid-latest" class="numeral">—</strong> were not hospitalized, and the status of <strong id="not-reported-covid-latest" class="numeral">—</strong> was not reported.
+        </p>
+
+        <figure>
+          <figcaption>COVID-19 hospitalizations over time</figcaption>
+          <svg class="cases-chart" id="hospitalization-chart"></svg>
+          <div class="legend"><div class="legend-icon not-hospitalized">&nbsp;</div> — Patients not hospitalized</div>
+          <div class="legend"><div class="legend-icon hospitalized">&nbsp;</div> — Patients hospitalized</div>
+          <div class="legend"><div class="legend-icon not-reported">&nbsp;</div> — Patients for which no status was reported</div>
+        </figure>
+      </section>
+
+      <h3>Ventilator Supply</h3>
+      <p>
+        There are currently <strong id="patients-on-ventilators" class="numeral">—</strong> COVID-19 patients on ventilators. The state has <strong id="ventilators-available-latest" class="numeral">—</strong> ventilators available.
+      </p>
+
+      <figure>
+        <figcaption>Ventilator supply over time</figcaption>
+        <svg class="cases-chart" id="ventilator-chart"></svg>
+        <div class="legend"><div class="legend-icon available-ventilators">&nbsp;</div> — Available ventilators</div>
+        <div class="legend"><div class="legend-icon patients-on-ventilators">&nbsp;</div> — COVID-19 patients on ventilators</div>
+      </figure>
+
+      <h3>Hospital Bed Capacity</h3>
+      <p>
+        For <strong>adults</strong>, Oregon has <strong id="adult-bed-icu-latest" class="numeral">—</strong> ICU beds available and <strong id="adult-bed-non-icu-latest" class="numeral">—</strong>
+        non-ICU beds.
+      </p>
+
+      <figure>
+        <figcaption>Adult hospital beds over time</figcaption>
+        <svg class="cases-chart" id="adult-bed-chart"></svg>
+        <div class="legend"><div class="legend-icon available-non-icu-beds">&nbsp;</div> — Available adult non-ICU Beds</div>
+        <div class="legend"><div class="legend-icon available-icu-beds">&nbsp;</div> — Available adult ICU Beds</div>
+      </figure>
+
+      <p>
+        For <strong>children</strong>, Oregon has <strong id="pediatric-bed-icu-latest" class="numeral">—</strong> ICU beds available and <strong id="pediatric-bed-non-icu-latest" class="numeral">—</strong>
+        non-ICU beds.
+      </p>
+
+      <figure>
+        <figcaption>Pediatric hospital beds over time</figcaption>
+        <svg class="cases-chart" id="pediatric-bed-chart"></svg>
+        <div class="legend"><div class="legend-icon available-non-icu-beds">&nbsp;</div> — Available pediatric non-ICU Beds</div>
+        <div class="legend"><div class="legend-icon available-icu-beds">&nbsp;</div> — Available pediatric ICU Beds</div>
+      </figure>
+    </section>
+
+    <section>
       <h2>Cases</h2>
+
+      <p>
+        COVID-19 test results give us a window into how the virus is spreading in Oregon, but the state's limited ability to test means the view that data provides is also limited. A report by the Institute for Disease Modeling on <strong>March 23rd</strong> estimated the number of COVID-19 cases in Oregon was four times higher<label for="higher-than-diagnosed" class="margin-toggle sidenote-number"></label>
+        <input type="checkbox" id="higher-than-diagnosed" class="margin-toggle" />
+        <span class="sidenote">
+          <a href="https://govsite-assets.s3.amazonaws.com/VooxlwVoTey3aArqqFkG_Oregon-COVID-19-Projections-2020-03-23.pdf">Working paper: Projected COVID-19 epidemic trends
+            and health system needs for Oregon</a>, Institute for Disease Modeling.
+        </span> than the number currently diagnosed.
+      </p>
+
+      <p>
+        A shipment of 4,000 testing swabs from the U.S. Department of Health and Human Services on <strong>March 25th</strong> increased Oregon's testing capacity<label for="swab-shipment" class="margin-toggle sidenote-number"></label>
+        <input type="checkbox" id="swab-shipment" class="margin-toggle" />
+        <span class="sidenote">
+          <a href="https://www.opb.org/news/article/covid-19-coronavirus-test-capacity-oregon-swab-shortage/">Surge In Oregon's COVID-19 Testing Capacity Expected This Week</a>, Oregon Public Broadcasting.
+        </span>. A spike in positive and negative COVID-19 cases begins to occur around <strong>March 27th</strong> due
+        to the increased testing capacity<label for="why-num-cases-increasing" class="margin-toggle sidenote-number"></label>
+        <input type="checkbox" id="why-num-cases-increasing" class="margin-toggle" />
+        <span class="sidenote">
+          <a href="https://www.youtube.com/watch?v=sxeKZg9NqN4&feature=youtu.be">Why the number of cases is increasing</a>, Oregon Public Health Division.
+        </span>. This spike is not due to a sudden acceleration of the virus' spread.
+      </p>
 
       <h3>Positive</h3>
 
       <p>
-        There have been <strong id="positive-delta" class="numeral">—</strong> newly confirmed cases of COVID-19 since the last report, and <strong id="positive-total" class="numeral">—</strong> cases in Oregon overall.
+        There have been <strong id="positive-delta" class="numeral">—</strong> newly confirmed cases of COVID-19 since the last report, and there have been <strong id="positive-total" class="numeral">—</strong> cases in Oregon overall.
       </p>
 
       <figure>
-        <svg class="cases-chart" id="positive-cases-chart"></svg>
         <figcaption>Positive COVID-19 cases over time</figcaption>
+        <svg class="cases-chart" id="positive-cases-chart"></svg>
+        <div class="legend"><div class="legend-icon positive-test">&nbsp;</div> — Positive COVID-19 tests (cumulative)</div>
       </figure>
 
       <h3>Negative</h3>
 
       <p>
-        There have been <strong id="negative-delta" class="numeral">—</strong> newly confirmed negative tests of COVID-19 since the last report, and <strong id="negative-total" class="numeral">—</strong> negative tests in Oregon overall.
+        There have been <strong id="negative-delta" class="numeral">—</strong> newly confirmed negative tests of COVID-19 since the last report, and there have been <strong id="negative-total" class="numeral">—</strong> negative tests in Oregon overall.
       </p>
 
       <figure>
         <figcaption>Negative COVID-19 cases over time</figcaption>
         <svg class="cases-chart" id="negative-cases-chart"></svg>
+        <div class="legend"><div class="legend-icon negative-test">&nbsp;</div> — Negative COVID-19 tests (cumulative)</div>
       </figure>
 
       <h3>Deaths</h3>
 
       <p>
-        There have been <strong id="death-delta" class="numeral">—</strong> COVID-19-related deaths since the last report, and <strong id="death-total" class="numeral">—</strong> COVID-19-related deaths in Oregon overall.
+        There have been <strong id="death-delta" class="numeral">—</strong> COVID-19-related deaths since the last report, and there have been <strong id="death-total" class="numeral">—</strong> COVID-19-related deaths in Oregon overall.
       </p>
 
       <figure>
         <figcaption>COVID-19 deaths over time.</figcaption>
         <svg class="cases-chart" id="deaths-cases-chart"></svg>
+        <div class="legend"><div class="legend-icon death">&nbsp;</div> — COVID-19-related deaths (cumulative)</div>
       </figure>
 
-      <h3>COVID-19 Tests Data</h3>
+      <h3>All OHA COVID-19 Case Reports, by Day</h3>
 
       <table class="cases-table" id="positive-cases-table">
         <caption>Postive Tests</caption>
         <thead>
           <tr>
             <th>Date</th>
-            <th>Cumulative</th>
             <th>New</th>
+            <th>Total</th>
           </tr>
         </thead>
         <tbody>
@@ -100,8 +178,8 @@
         <caption>Negative Tests</caption>
         <thead>
           <tr>
-            <th>Cumulative</th>
             <th>New</th>
+            <th>Total</th>
           </tr>
         </thead>
         <tbody>
@@ -112,78 +190,115 @@
         <caption>Deaths</caption>
         <thead>
           <tr>
-            <th>Cumulative</th>
             <th>New</th>
+            <th>Total</th>
           </tr>
         </thead>
         <tbody>
         </tbody>
       </table>
     </section>
-
-    <section>
-      <h2>Hospital Resources</h2>
-      <p>
-        There are currently <strong class="numeral">102</strong> people hospitalized due to COVID-19. <strong
-          class="numeral">218</strong> are not hospitalized, and the status of <strong class="numeral">94</strong> are
-        unreported.
-      </p>
-
-      <p>
-        The state has <strong class="numeral">715</strong> ventilators available. <strong class="numeral">31</strong>
-        COVID-19 patients are on ventilators.
-      </p>
-
-      <p>
-        Oregon has <strong class="numeral">360</strong> ICU beds available and <strong class="numeral">2,294</strong>
-        non-ICU beds.
-      </p>
-    </section>
-
   </article>
 </body>
 
 <script>
   document.addEventListener("DOMContentLoaded", function (e) {
-    d3.csv("./reports.csv").then(function (reports) {
-      reports.forEach(function (report) {
-        report.positive = parseInt(report.positive)
-        report.negative = parseInt(report.negative)
-        report.deaths = parseInt(report.deaths)
-        report.date = new Date(report.date)
-      })
-      var day0 = reports[0];
-      var today = reports[reports.length - 1];
-      var numberFormatter = d3.format(",");
-      var dateFormatter = d3.timeFormat("%m/%d");
-      var changeFormatter = function (n) {
-        if (n < 0) return "-" + numberFormatter(n)
-        if (n > 0) return "+" + numberFormatter(n)
-        return " " + numberFormatter(n)
-      }
+    Promise.all([
+      d3.csv("reports.csv",  d3.autoType),
+      d3.csv("hospitals.csv",  d3.autoType),
+    ]).then(function(files) {
+      let reports = files[0];
+      let hospitalInfo = files[1];
 
-      d3.select("#positive-delta").datum(today).text(function (d) {
-        return numberFormatter(d.positive - reports[reports.length-2].positive)
-      })
-      d3.select("#positive-total").datum(today).text(function (d) { return numberFormatter(d.positive) })
 
-      d3.select("#negative-delta").datum(today).text(function (d) {
-        return numberFormatter(d.negative - reports[reports.length-2].negative)
-      })
-      d3.select("#negative-total").datum(today).text(function (d) { return numberFormatter(d.negative) })
+      renderInlineLatest("#hospitalized-covid-latest", hospitalInfo, "hospitalized")
+      renderInlineLatest("#not-hospitalized-covid-latest", hospitalInfo, "not_hospitalized")
+      renderInlineLatest("#not-reported-covid-latest", hospitalInfo, "status_not_provided")
 
-      d3.select("#death-delta").datum(today).text(function (d) {
-        return numberFormatter(d.deaths - reports[reports.length-2].deaths)
+      renderStackedCaseChart({
+        chartSelector: "#hospitalization-chart",
+        data: hospitalInfo,
+        attributes: ["status_not_provided", "hospitalized", "not_hospitalized"],
+        colors: {
+          "hospitalized": {area: "rgba(255, 0, 0, 0.3)", line: "rgba(255, 0, 0, 1.0)"},
+          "not_hospitalized": {area: "rgba(255, 209, 18, 0.35)", line: "rgba(255, 212, 0, 1.0)"},
+          "status_not_provided": {area: "rgba(0, 0, 0, 0.1)", line: "rgba(0, 0, 0, 0.40)"}
+        }
       })
-      d3.select("#death-total").datum(today).text(function (d) { return numberFormatter(d.deaths) })
+
+      renderInlineLatest("#ventilators-available-latest", hospitalInfo, "available_ventilators")
+      renderInlineLatest("#patients-on-ventilators", hospitalInfo, "covid_on_ventilators")
+
+      renderStackedCaseChart({
+        chartSelector: "#ventilator-chart",
+        data: hospitalInfo,
+        attributes: ["covid_on_ventilators", "available_ventilators"],
+        colors: {
+          "covid_on_ventilators": {area: "rgba(255, 0, 0, 0.3)", line: "rgba(255, 0, 0, 1.0)"},
+          "available_ventilators": {area: "rgba(0, 120, 255, 0.3)", line: "rgba(0, 120, 255, 1.0)"},
+        }
+      })
+
+      renderInlineLatest("#adult-bed-icu-latest", hospitalInfo, "available_adult_icu_beds")
+      renderInlineLatest("#adult-bed-non-icu-latest", hospitalInfo, "available_adult_beds")
+
+      renderStackedCaseChart({
+        chartSelector: "#adult-bed-chart",
+        data: hospitalInfo,
+        attributes: ["available_adult_icu_beds", "available_adult_beds"],
+        colors: {
+          "available_adult_icu_beds": {area: "rgba(135, 110, 255, 0.3)", line: "rgba(135, 110, 255, 1.0)"},
+          "available_adult_beds": {area: "rgba(255, 164, 250, 0.3)", line: "rgba(255, 164, 250, 1.0)"},
+        }
+      })
+
+      renderInlineLatest("#pediatric-bed-icu-latest", hospitalInfo, "available_pediatric_icu")
+      renderInlineLatest("#pediatric-bed-non-icu-latest", hospitalInfo, "available_pediatric")
+
+      renderStackedCaseChart({
+        chartSelector: "#pediatric-bed-chart",
+        data: hospitalInfo,
+        attributes: ["available_pediatric_icu", "available_pediatric"],
+        colors: {
+          "available_pediatric_icu": {area: "rgba(135, 110, 255, 0.3)", line: "rgba(135, 110, 255, 1.0)"},
+          "available_pediatric": {area: "rgba(255, 164, 250, 0.3)", line: "rgba(255, 164, 250, 1.0)"},
+        }
+      })
+
+      renderInlineLatest("#positive-total", reports, "positive")
+      renderInlineDelta("#positive-delta", reports, "positive")
+
+      // missing daily deltas now... :(
+      renderStackedCaseChart({
+        chartSelector: "#positive-cases-chart",
+        data: reports,
+        attributes: ["positive"],
+        colors: {
+          "positive": {area: "rgba(255, 0, 0, 0.3)", line: "rgba(255, 0, 0, 1.0)"},
+        }
+      })
+
+      renderInlineLatest("#negative-total", reports, "negative")
+      renderInlineDelta("#negative-delta", reports, "negative")
+
+      renderInlineLatest("#death-total", reports, "deaths")
+      renderInlineDelta("#death-delta", reports, "deaths")
 
       renderCasesTable(d3.select("#positive-cases-table"), reports, "positive")
       renderCasesTable(d3.select("#negative-cases-table"), reports, "negative", true)
       renderCasesTable(d3.select("#deaths-table"), reports, "deaths", true)
 
-      renderCaseChart(d3.select("#positive-cases-chart"), reports, "positive")
+
+
+
+      // renderCaseChart(d3.select("#positive-cases-chart"), reports, "positive")
       renderCaseChart(d3.select("#negative-cases-chart"), reports, "negative")
       renderCaseChart(d3.select("#deaths-cases-chart"), reports, "deaths")
+
+
+    })
+    .catch(function(err) {
+        throw err;
     });
   });
 

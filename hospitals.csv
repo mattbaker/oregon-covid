@@ -1,0 +1,7 @@
+date,hospitalized,not_hospitalized,status_not_provided,available_adult_icu_beds,available_adult_beds,available_pediatric,available_pediatric_icu,available_ventilators,covid_admissions,covid_on_ventilators
+2020-03-25T00:00-07:00,75,135,56,362,2193,,,684,,
+2020-03-26T00:00-07:00,90,170,56,362,2193,,,684,,
+2020-03-27T00:00-07:00,102,218,94,360,2294,,,715,91,31
+2020-03-28T00:00-07:00,117,266,96,283,2099,189,68,756,107,31
+2020-03-29T00:00-07:00,129,316,103,285,2010,193,66,767,142,37
+2020-03-30T00:00-07:00,140,361,105,291,2059,203,67,765,142,39

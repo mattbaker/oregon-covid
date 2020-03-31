@@ -458,6 +458,7 @@ label.margin-toggle:not(.sidenote-number) {
 
     label {
         cursor: pointer;
+        text-decoration: underline;
     }
 
     div.table-wrapper,

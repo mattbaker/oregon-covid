@@ -1,3 +1,8 @@
+// Table:
+// bold last row
+// highlight last row? #f3d4402e
+// eliding
+
 function renderCasesTable(table, reports, attribute, omitDate) {
   let dateFormatter = d3.timeFormat("%m/%d");
   let access = (report) => report[attribute];
@@ -17,16 +22,16 @@ function renderCasesTable(table, reports, attribute, omitDate) {
 
   positiveTableRows
     .append("td")
-    .attr("class", ["numeral case-table-cumulative"])
-    .text((report) => d3.format(",")(access(report)))
-
-  positiveTableRows
-    .append("td")
     .attr("class", ["numeral case-table-delta"])
     .text(function (report, i) {
       if (i == 0) { return 0 }
       return changeFormatter(access(report) - access(reports[i-1]))
     })
+
+  positiveTableRows
+    .append("td")
+    .attr("class", ["numeral case-table-cumulative"])
+    .text((report) => d3.format(",")(access(report)))
 }
 
 function changeFormatter (n) {
