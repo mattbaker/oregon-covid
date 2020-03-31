@@ -8,20 +8,20 @@ var changeFormatter = function (n) {
 
 function renderInlineLatest(selector, data, attribute) {
   return d3.select(selector)
-    .datum(data[data.length-1][attribute])
+    .datum(data[data.length - 1][attribute])
     .text(numberFormatter)
 }
 
 function renderInlineDelta(selector, data, attribute) {
-  let current = data[data.length-1];
-  let previous = data[data.length-2];
+  let current = data[data.length - 1];
+  let previous = data[data.length - 2];
 
   return d3.select(selector)
     .datum(current[attribute] - previous[attribute])
     .text(numberFormatter)
 }
 
-function renderStackedCaseChart({chartSelector, data, attributes, colors}) {
+function renderStackedCaseChart({ chartSelector, data, attributes, colors }) {
   let svg = d3.select(chartSelector);
   let width = 700;
   let height = 400;
@@ -37,14 +37,21 @@ function renderStackedCaseChart({chartSelector, data, attributes, colors}) {
     .range([height - margin.bottom, margin.top])
 
   let xAxis = g => {
+    let [min, max] = xScale.domain()
+    let step = Math.max(1, data.length / 10);
+    let tickValues = d3.timeDay.range(min, max, step)
+
+    if (tickValues[tickValues.length - 1] !== max) {
+      tickValues.push(max)
+    }
     let axis = d3.axisBottom(xScale)
-      .ticks(d3.timeDay.every(1))
+      .tickValues(tickValues)
       .tickFormat(dateFormatter)
 
     return g.attr("transform", `translate(0, ${height - margin.bottom})`)
       .call(axis)
       .selectAll("text")
-      .attr("class", "axis-text")
+      .attr("class", "axis-text numeral")
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
       .attr("dy", ".15em")
@@ -58,7 +65,7 @@ function renderStackedCaseChart({chartSelector, data, attributes, colors}) {
       .attr("transform", `translate(${width - margin.right}, 0)`)
       .call(axis)
       .selectAll("text")
-      .attr("class", "axis-text")
+      .attr("class", "axis-text numeral")
   }
 
   let area = d3.area()
@@ -68,11 +75,6 @@ function renderStackedCaseChart({chartSelector, data, attributes, colors}) {
 
   svg.attr("viewBox", [0, 0, width, height])
 
-  svg.append("g")
-    .call(xAxis)
-
-  svg.append("g")
-    .call(yAxis)
 
   svg.append("g")
     .selectAll("path")
@@ -90,4 +92,10 @@ function renderStackedCaseChart({chartSelector, data, attributes, colors}) {
     .attr("class", "case-line")
     .attr("stroke", ({ key }) => colors[key].line)
     .attr("d", area.lineY1())
+
+  svg.append("g")
+    .call(xAxis)
+
+  svg.append("g")
+    .call(yAxis)
 }
