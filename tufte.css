@@ -419,6 +419,10 @@ label.margin-toggle:not(.sidenote-number) {
         max-width: 90%;
     }
 
+    figure text {
+        font-size: 110%;
+    }
+
     figcaption,
     figure.fullwidth figcaption {
         margin-right: 0%;

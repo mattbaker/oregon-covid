@@ -1,17 +1,39 @@
-th {
+.cases-table .cases-column-groupings th {
+  font-weight: normal;
+}
+
+.cases-table .cases-data-columns th {
   text-align: left;
   border-bottom: 1px solid #111;
   font-variant: small-caps;
 }
 
-.cases-table {
-  width: auto;
-  margin-right: 10px;
-  float: left;
+.cases-table th,
+.cases-table td {
+  padding-right: 5px;
 }
 
-.cases-table td,th {
-  padding-right: 20px;
+.cases-table th.spacer,
+.cases-table td.spacer {
+  border: none;
+  width: 10px;
+  background: none;
+}
+
+.cases-table .cases-first-row {
+  background: rgba(255, 239, 176, 0.75);
+}
+
+.cases-table td.positive-case-cell {
+  color: rgb(189, 0, 0)
+}
+
+.cases-table td.negative-case-cell {
+  color: rgb(43, 132, 7)
+}
+
+.cases-table td.deaths-cell {
+  color: rgba(65, 65, 65, 1)
 }
 
 .legend {
@@ -118,27 +140,15 @@ th {
 }
 
 
-#deaths-cases-chart.cases-chart .case-area {
+#deaths-chart.cases-chart .case-area {
   fill: rgba(65, 65, 65, 0.3)
 }
 
-#deaths-cases-chart.cases-chart .case-line {
+#deaths-chart.cases-chart .case-line {
   stroke: rgba(65, 65, 65, 1.0);
 }
 
-#deaths-cases-chart.cases-chart .case-bar {
+#deaths-chart.cases-chart .case-bar {
   stroke: none;
   fill: rgba(65, 65, 65, 1.0);
-}
-
-#positive-cases-table td.numeral {
-  color: rgb(189, 0, 0)
-}
-
-#negative-cases-table td.numeral {
-  color: rgb(43, 132, 7)
-}
-
-#deaths-table td.numeral {
-  color: rgba(65, 65, 65, 1)
 }
