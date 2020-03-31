@@ -113,6 +113,10 @@
   stroke: none;
 }
 
+.axis-text {
+  font-size: 13px;
+}
+
 #positive-cases-chart.cases-chart .case-area {
   fill: rgba(255, 0, 0, 0.3)
 }
