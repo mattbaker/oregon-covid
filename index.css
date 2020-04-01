@@ -147,7 +147,6 @@
   fill: rgba(107, 167, 83, 1.0);
 }
 
-
 #deaths-chart.cases-chart .case-area {
   fill: rgba(65, 65, 65, 0.3)
 }
@@ -159,6 +158,12 @@
 #deaths-chart.cases-chart .case-bar {
   stroke: none;
   fill: rgba(65, 65, 65, 1.0);
+}
+
+.chart-gridline {
+  stroke: #bbb;
+  stroke-dasharray: 5,5;
+  stroke-width: 1px;
 }
 
 .page-footer {

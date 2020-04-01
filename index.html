@@ -212,7 +212,7 @@
     renderInlineLatest("#hospitalized-covid-latest", hospitalInfo, "hospitalized")
     renderInlineLatest("#not-hospitalized-covid-latest", hospitalInfo, "not_hospitalized")
     renderInlineLatest("#not-reported-covid-latest", hospitalInfo, "status_not_provided")
-    renderStackedCaseChart({
+    renderStackedChart({
       chartSelector: "#hospitalization-chart",
       data: hospitalInfo,
       attributes: ["status_not_provided", "hospitalized", "not_hospitalized"],
@@ -226,10 +226,11 @@
     // Ventilators
     renderInlineLatest("#ventilators-available-latest", hospitalInfo, "available_ventilators")
     renderInlineLatest("#patients-on-ventilators", hospitalInfo, "covid_on_ventilators")
-    renderStackedCaseChart({
+    renderOpposingChart({
       chartSelector: "#ventilator-chart",
       data: hospitalInfo,
-      attributes: ["covid_on_ventilators", "available_ventilators"],
+      positiveAttributes: ["available_ventilators"],
+      negativeAttributes: ["covid_on_ventilators"],
       colors: {
         "covid_on_ventilators": {area: "rgba(255, 0, 0, 0.3)", line: "rgba(255, 0, 0, 1.0)"},
         "available_ventilators": {area: "rgba(0, 120, 255, 0.3)", line: "rgba(0, 120, 255, 1.0)"},
@@ -239,7 +240,7 @@
     // Adult Beds
     renderInlineLatest("#adult-bed-icu-latest", hospitalInfo, "available_adult_icu_beds")
     renderInlineLatest("#adult-bed-non-icu-latest", hospitalInfo, "available_adult_beds")
-    renderStackedCaseChart({
+    renderStackedChart({
       chartSelector: "#adult-bed-chart",
       data: hospitalInfo,
       attributes: ["available_adult_icu_beds", "available_adult_beds"],
@@ -252,7 +253,7 @@
     // Pediatric Beds
     renderInlineLatest("#pediatric-bed-icu-latest", hospitalInfo, "available_pediatric_icu")
     renderInlineLatest("#pediatric-bed-non-icu-latest", hospitalInfo, "available_pediatric")
-    renderStackedCaseChart({
+    renderStackedChart({
       chartSelector: "#pediatric-bed-chart",
       data: hospitalInfo,
       attributes: ["available_pediatric_icu", "available_pediatric"],
@@ -265,7 +266,7 @@
     // Positive cases
     renderInlineLatest("#positive-total", reports, "positive")
     renderInlineDelta("#positive-delta", reports, "positive")
-    renderStackedCaseChart({
+    renderStackedChart({
       chartSelector: "#positive-cases-chart",
       data: reports,
       attributes: ["positive"],
@@ -277,7 +278,7 @@
     // Negative cases
     renderInlineLatest("#negative-total", reports, "negative")
     renderInlineDelta("#negative-delta", reports, "negative")
-    renderStackedCaseChart({
+    renderStackedChart({
       chartSelector: "#negative-cases-chart",
       data: reports,
       attributes: ["negative"],
@@ -289,7 +290,7 @@
     // Deaths
     renderInlineLatest("#death-total", reports, "deaths")
     renderInlineDelta("#death-delta", reports, "deaths")
-    renderStackedCaseChart({
+    renderStackedChart({
       chartSelector: "#deaths-chart",
       data: reports,
       attributes: ["deaths"],
