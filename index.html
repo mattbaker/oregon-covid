@@ -3,19 +3,18 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Oregon COVID-19 Reports</title>
+  <title>Oregon COVID-19 Report Data</title>
   <link rel="stylesheet" href="tufte.css" />
   <link rel="stylesheet" href="index.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="./lib/charts.js"></script>
   <script src="./lib/tables.js"></script>
-
 </head>
 
 <body>
   <article>
-    <h1>Oregon COVID-19 Reports</h1>
+    <h1>Oregon COVID-19 Report Data</h1>
 
     <section>
       <h2>Overview</h2>
@@ -27,25 +26,30 @@
           See Oregon Health Authority's <a href="https://govstatus.egov.com/OR-OHA-COVID-19">COVID-19 Reports</a>
         </span>
         made public by the Oregon Health Authority. It is updated daily as the OHA makes
-        new data available.
+        new data available. The last update was <strong id="last-updated">—</strong>.
       </p>
 
       <p>
-        The OHA's <a href="https://www.oregon.gov/oha/erd/pages/covid-19-news.aspx">External Relations Division</a>, has news releases with valuable context about the data you see here.
+        The OHA's <a href="https://www.oregon.gov/oha/erd/pages/covid-19-news.aspx">External Relations Division</a> has news releases with valuable context about the data you see here. Check them out! They're providing frequent, valuable updates to the community that puts this data in perspective.
+      </p>
+
+      <p>
+        <strong>This is an independent side-project and is not affiliated with the Oregon Health Authority.</strong>
       </p>
     </section>
 
     <section>
       <section>
         <h2>Care Capacity</h2>
-        <h3>Hospitalizations</h3>
         <p>
           While the daily COVID-19 case counts make headlines, the most important<label for="most-important-data" class="margin-toggle sidenote-number"></label>
           <input type="checkbox" id="most-important-data" class="margin-toggle" />
           <span class="sidenote">
             <a href="https://www.youtube.com/watch?v=sxeKZg9NqN4&feature=youtu.be">Why the number of cases is increasing</a>, Oregon Public Health Division.
-          </span> data to focus on during the pandemic is the state's capacity to care for Oregonians in need of medical attention, and the load the medical system is currently under.
+          </span> data to focus on during the pandemic is the state's capacity to care for Oregonians in need of medical attention. This includes looking at what load the medical system is currently under, and what resources remain available.
         </p>
+
+        <h3>Hospitalizations</h3>
         <p>
           Of those diagnosed with COVID-19, <strong id="hospitalized-covid-latest" class="numeral">—</strong> patients have been hospitalized, <strong
             id="not-hospitalized-covid-latest" class="numeral">—</strong> were not hospitalized, and the status of <strong id="not-reported-covid-latest" class="numeral">—</strong> were not reported.
@@ -62,7 +66,14 @@
 
       <h3>Ventilator Supply</h3>
       <p>
-        There are currently <strong id="patients-on-ventilators" class="numeral">—</strong> COVID-19 patients on ventilators. The state has <strong id="ventilators-available-latest" class="numeral">—</strong> ventilators available.
+        Ventilators are critical for treatment of COVID-19 patients in intensive care, and they are in short supply nationwide<label for="limited-ventilator-supply" class="margin-toggle sidenote-number"></label>
+        <input type="checkbox" id="limited-ventilator-supply" class="margin-toggle" />
+        <span class="sidenote">
+          <a href="https://www.nejm.org/doi/full/10.1056/NEJMp2006141">Critical Supply Shortages — The Need for Ventilators and Personal Protective Equipment during the Covid-19 Pandemic</a>, The New England Journal of Medicine.
+        </span>.
+      </p>
+      <p>
+        Oregon currently has <strong id="ventilators-available-latest" class="numeral">—</strong> ventilators available. <strong id="patients-on-ventilators" class="numeral">—</strong> COVID-19 patients are currently on ventilators.
       </p>
 
       <figure>
@@ -73,8 +84,14 @@
       </figure>
 
       <h3>Hospital Bed Capacity</h3>
+      <p>Social-distancing efforts are <a href="https://www.oregon.gov/newsroom/Pages/NewsDetail.aspx?newsid=36240">in place</a> and must continue<label for="social-distancing-required" class="margin-toggle sidenote-number"></label>
+        <input type="checkbox" id="social-distancing-required" class="margin-toggle" />
+        <span class="sidenote">
+          <a href="https://www.oregon.gov/oha/ERD/Pages/Oregon-releases-health-care-system-action-plan-to-fight-COVID-19.aspx">Oregon releases health care system action plan to fight COVID-19</a>, Oregon Health Authority.
+        </span>
+        to ensure the number of COVID-19 hospitalizations do not outstrip hospital capacity.</p>
       <p>
-        For <strong>adults</strong>, Oregon has <strong id="adult-bed-icu-latest" class="numeral">—</strong> ICU beds available and <strong id="adult-bed-non-icu-latest" class="numeral">—</strong>
+        For <strong>adults</strong>, Oregon currently has <strong id="adult-bed-icu-latest" class="numeral">—</strong> ICU beds available and <strong id="adult-bed-non-icu-latest" class="numeral">—</strong>
         non-ICU beds.
       </p>
 
@@ -86,7 +103,7 @@
       </figure>
 
       <p>
-        For <strong>children</strong>, Oregon has <strong id="pediatric-bed-icu-latest" class="numeral">—</strong> ICU beds available and <strong id="pediatric-bed-non-icu-latest" class="numeral">—</strong>
+        For <strong>children</strong>, Oregon currently has <strong id="pediatric-bed-icu-latest" class="numeral">—</strong> ICU beds available and <strong id="pediatric-bed-non-icu-latest" class="numeral">—</strong>
         non-ICU beds.
       </p>
 
@@ -102,12 +119,12 @@
       <h2>Cases</h2>
 
       <p>
-        COVID-19 test results provide a window into how the virus is spreading in Oregon, but the state's limited ability to test means the data does not paint an accurate picture of the total number of COVID-19 cases in the state. A report by the Institute for Disease Modeling on <strong>March 23rd</strong> estimated the number of COVID-19 cases in Oregon was four times higher<label for="higher-than-diagnosed" class="margin-toggle sidenote-number"></label>
+        COVID-19 test results provide a window into how the virus is spreading in Oregon, but the state's limited ability to test means the data does not paint an accurate picture of the total number of infections in the state. A report by the Institute for Disease Modeling on <strong>March 23rd</strong> estimated the number of COVID-19 cases in Oregon was four times higher<label for="higher-than-diagnosed" class="margin-toggle sidenote-number"></label>
         <input type="checkbox" id="higher-than-diagnosed" class="margin-toggle" />
         <span class="sidenote">
           <a href="https://govsite-assets.s3.amazonaws.com/VooxlwVoTey3aArqqFkG_Oregon-COVID-19-Projections-2020-03-23.pdf">Working paper: Projected COVID-19 epidemic trends
             and health system needs for Oregon</a>, Institute for Disease Modeling.
-        </span> than the number currently diagnosed.
+        </span> than the total positives confirmed by testing.
       </p>
 
       <p>
@@ -207,6 +224,8 @@
   ]).then(function(files) {
     let reports = files[0];
     let hospitalInfo = files[1];
+
+    renderInlineLatest("#last-updated", reports, "date", d3.timeFormat("%B %d, %Y"))
 
     // Hospitalization
     renderInlineLatest("#hospitalized-covid-latest", hospitalInfo, "hospitalized")

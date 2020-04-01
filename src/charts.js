@@ -6,19 +6,21 @@ var changeFormatter = function (n) {
   return " " + numberFormatter(n)
 }
 
-function renderInlineLatest(selector, data, attribute) {
+function renderInlineLatest(selector, data, attribute, formatter) {
+  formatter = formatter || numberFormatter
   return d3.select(selector)
     .datum(data[data.length - 1][attribute])
-    .text(numberFormatter)
+    .text(formatter)
 }
 
-function renderInlineDelta(selector, data, attribute) {
+function renderInlineDelta(selector, data, attribute, formatter) {
+  formatter = formatter || numberFormatter
   let current = data[data.length - 1];
   let previous = data[data.length - 2];
 
   return d3.select(selector)
     .datum(current[attribute] - previous[attribute])
-    .text(numberFormatter)
+    .text(formatter)
 }
 
 function renderStackedChart({ chartSelector, data, attributes, colors }) {
