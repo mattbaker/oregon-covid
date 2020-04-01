@@ -25,7 +25,7 @@ function renderStackedCaseChart({ chartSelector, data, attributes, colors }) {
   let svg = d3.select(chartSelector);
   let width = 700;
   let height = 400;
-  let margin = { left: 20, right: 55, bottom: 55, top: 15 };
+  let margin = { left: 28, right: 55, bottom: 55, top: 15 };
 
   let series = d3.stack().keys(attributes)(data)
   let xScale = d3.scaleTime()
@@ -55,7 +55,7 @@ function renderStackedCaseChart({ chartSelector, data, attributes, colors }) {
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
       .attr("dy", ".15em")
-      .attr("transform", "rotate(-65)");
+      .attr("transform", "rotate(-45)");
   }
 
   let yAxis = g => {
