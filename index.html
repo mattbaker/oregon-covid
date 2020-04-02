@@ -65,8 +65,8 @@ window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){va
           <figcaption>COVID-19 hospitalizations over time</figcaption>
           <svg class="cases-chart" id="hospitalization-chart"></svg>
           <div class="legend"><div class="legend-icon not-hospitalized">&nbsp;</div> — Patients not hospitalized</div>
-          <div class="legend"><div class="legend-icon hospitalized">&nbsp;</div> — Patients hospitalized</div>
           <div class="legend"><div class="legend-icon not-reported">&nbsp;</div> — Patients for which no status was reported</div>
+          <div class="legend"><div class="legend-icon hospitalized">&nbsp;</div> — Patients hospitalized</div>
         </figure>
       </section>
 
@@ -240,11 +240,11 @@ window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){va
     renderStackedChart({
       chartSelector: "#hospitalization-chart",
       data: hospitalInfo,
-      attributes: ["status_not_provided", "hospitalized", "not_hospitalized"],
+      attributes: ["hospitalized", "status_not_provided", "not_hospitalized"],
       colors: {
         "hospitalized": {area: "rgba(255, 0, 0, 0.3)", line: "rgba(255, 0, 0, 1.0)"},
-        "not_hospitalized": {area: "rgba(255, 209, 18, 0.35)", line: "rgba(255, 212, 0, 1.0)"},
-        "status_not_provided": {area: "rgba(0, 0, 0, 0.1)", line: "rgba(0, 0, 0, 0.40)"}
+        "status_not_provided": {area: "rgba(0, 0, 0, 0.1)", line: "rgba(0, 0, 0, 0.40)"},
+        "not_hospitalized": {area: "rgba(255, 209, 18, 0.35)", line: "rgba(255, 212, 0, 1.0)"}
       }
     })
 
