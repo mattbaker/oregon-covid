@@ -1,3 +1,5 @@
+// change-over-time chart for cases?
+// new cases?
 var numberFormatter = d3.format(",");
 var dateFormatter = d3.timeFormat("%m/%d");
 var changeFormatter = function (n) {

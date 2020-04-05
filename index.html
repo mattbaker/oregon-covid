@@ -56,7 +56,7 @@ window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){va
         </p>
 
         <p>
-          <strong>Note: Up-to-date hospital related information has not being reported since April 2nd while the OHA resolves data entry questions</strong><label for="missing-hospital-data" class="margin-toggle sidenote-number"></label>
+          <strong>Note: Up-to-date numbers for ventilator supply and hospital beds have not been reported since April 2nd. According to the OHA it is resolving data entry questions.</strong><label for="missing-hospital-data" class="margin-toggle sidenote-number"></label>
             <input type="checkbox" id="missing-hospital-data" class="margin-toggle" />
             <span class="sidenote">
               <a href="https://govsite-assets.s3.amazonaws.com/9BrRkUvtT8aMSfPNGWf7_Oregon-COVID-19-Update-04-03-2020-FINAL.pdf">April 3, 2020 Daily Update</a>, Oregon Health Authority</span>.
@@ -260,7 +260,7 @@ window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){va
     renderInlineLatest("#patients-on-ventilators", hospitalInfo, "covid_on_ventilators")
     renderOpposingChart({
       chartSelector: "#ventilator-chart",
-      data: hospitalInfo,
+      data: hospitalInfo.slice(0, 8), // Until OHA's issues are resolved
       positiveAttributes: ["available_ventilators"],
       negativeAttributes: ["covid_on_ventilators"],
       colors: {
@@ -274,7 +274,7 @@ window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){va
     renderInlineLatest("#adult-bed-non-icu-latest", hospitalInfo, "available_adult_beds")
     renderStackedChart({
       chartSelector: "#adult-bed-chart",
-      data: hospitalInfo,
+      data: hospitalInfo.slice(0, 8), // Until OHA's issues are resolved
       attributes: ["available_adult_icu_beds", "available_adult_beds"],
       colors: {
         "available_adult_icu_beds": {area: "rgba(135, 110, 255, 0.3)", line: "rgba(135, 110, 255, 1.0)"},
@@ -287,7 +287,7 @@ window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){va
     renderInlineLatest("#pediatric-bed-non-icu-latest", hospitalInfo, "available_pediatric")
     renderStackedChart({
       chartSelector: "#pediatric-bed-chart",
-      data: hospitalInfo,
+      data: hospitalInfo.slice(0, 8), // Until OHA's issues are resolved
       attributes: ["available_pediatric_icu", "available_pediatric"],
       colors: {
         "available_pediatric_icu": {area: "rgba(135, 110, 255, 0.3)", line: "rgba(135, 110, 255, 1.0)"},
