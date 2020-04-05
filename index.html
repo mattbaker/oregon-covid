@@ -86,7 +86,7 @@ window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){va
         </span>.
       </p>
       <p>
-        Oregon currently has <strong id="ventilators-available-latest" class="numeral">—</strong> ventilators available. <strong id="patients-on-ventilators" class="numeral">—</strong> COVID-19 patients are currently on ventilators.
+        As of <strong>April 1st</strong>, Oregon currently has <strong id="ventilators-available-latest" class="numeral">—</strong> ventilators available. <strong id="patients-on-ventilators" class="numeral">—</strong> COVID-19 patients were on ventilators.
       </p>
 
       <figure>
@@ -105,7 +105,7 @@ window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){va
         to ensure the number of COVID-19 hospitalizations do not outstrip hospital capacity.</p>
       <p>
         For <strong>adults</strong>, Oregon currently has <strong id="adult-bed-icu-latest" class="numeral">—</strong> ICU beds available and <strong id="adult-bed-non-icu-latest" class="numeral">—</strong>
-        non-ICU beds.
+        non-ICU beds as of <strong>April 1st</strong>.
       </p>
 
       <figure>
@@ -117,7 +117,7 @@ window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){va
 
       <p>
         For <strong>children</strong>, Oregon currently has <strong id="pediatric-bed-icu-latest" class="numeral">—</strong> ICU beds available and <strong id="pediatric-bed-non-icu-latest" class="numeral">—</strong>
-        non-ICU beds.
+        non-ICU beds as of <strong>April 1st</strong>.
       </p>
 
       <figure>
@@ -256,8 +256,8 @@ window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){va
     })
 
     // Ventilators
-    renderInlineLatest("#ventilators-available-latest", hospitalInfo, "available_ventilators")
-    renderInlineLatest("#patients-on-ventilators", hospitalInfo, "covid_on_ventilators")
+    renderInlineLatest("#ventilators-available-latest", hospitalInfo.slice(0, 8), "available_ventilators")
+    renderInlineLatest("#patients-on-ventilators", hospitalInfo.slice(0, 8), "covid_on_ventilators")
     renderOpposingChart({
       chartSelector: "#ventilator-chart",
       data: hospitalInfo.slice(0, 8), // Until OHA's issues are resolved
@@ -270,8 +270,8 @@ window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){va
     })
 
     // Adult Beds
-    renderInlineLatest("#adult-bed-icu-latest", hospitalInfo, "available_adult_icu_beds")
-    renderInlineLatest("#adult-bed-non-icu-latest", hospitalInfo, "available_adult_beds")
+    renderInlineLatest("#adult-bed-icu-latest", hospitalInfo.slice(0, 8), "available_adult_icu_beds")
+    renderInlineLatest("#adult-bed-non-icu-latest", hospitalInfo.slice(0, 8), "available_adult_beds")
     renderStackedChart({
       chartSelector: "#adult-bed-chart",
       data: hospitalInfo.slice(0, 8), // Until OHA's issues are resolved
@@ -283,8 +283,8 @@ window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){va
     })
 
     // Pediatric Beds
-    renderInlineLatest("#pediatric-bed-icu-latest", hospitalInfo, "available_pediatric_icu")
-    renderInlineLatest("#pediatric-bed-non-icu-latest", hospitalInfo, "available_pediatric")
+    renderInlineLatest("#pediatric-bed-icu-latest", hospitalInfo.slice(0, 8), "available_pediatric_icu")
+    renderInlineLatest("#pediatric-bed-non-icu-latest", hospitalInfo.slice(0, 8), "available_pediatric")
     renderStackedChart({
       chartSelector: "#pediatric-bed-chart",
       data: hospitalInfo.slice(0, 8), // Until OHA's issues are resolved
